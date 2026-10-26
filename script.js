@@ -25,6 +25,8 @@ let score = 0;
 let timerId = null;
 let animationId = null;
 
+
+
 // this updates the UI in a more step-by-step way so it's easier to understand what is changing.
 function updateDisplay() {
   // first, update the gate visuals
@@ -77,6 +79,7 @@ function updateDisplay() {
   }
 }
 
+
 // Create a function that ends the round and shows either a win or lose message depending on the results or what happened.
 function finishGame(won, message) {
   gameOver = true;
@@ -90,6 +93,7 @@ function finishGame(won, message) {
   }
   updateDisplay();
 }
+
 
 // this handles clicking each switch and changes the gates based on the sequence of presses.
 function activateSwitch(index) {
@@ -120,21 +124,36 @@ function activateSwitch(index) {
   updateDisplay();
 }
 
+
 // this starts the timer and sets the game into play mode.
 function startGame() {
-  if (gameStarted) return;
+  // if the game already started, don't start another timer.
+  if (gameStarted) {
+    return;
+  }
+
+  // remember that the game is running and disable the start button.
   gameStarted = true;
   startBtn.disabled = true;
+
+  // tell the player what to do and update the buttons.
   feedback.textContent = 'The clock is running! Click the switches in the environment.';
   updateDisplay();
+
+  // this takes one second off the timer every second.
   timerId = setInterval(() => {
     seconds--;
+
+    // when the timer reaches zero, end the game. Otherwise, show the new time.
     if (seconds <= 0) {
       seconds = 0;
       finishGame(false, 'Time is up! Restart to try the puzzle again.');
-    } else updateDisplay();
+    } else {
+      updateDisplay();
+    }
   }, 1000);
 }
+
 
 // this resets everything back to the starting state so the player can try again.
 function resetGame() {
@@ -175,4 +194,3 @@ releaseBtn.addEventListener('click', () => {
 
 // this runs once at the start so the game begins in a clean reset state.
 resetGame();
-
