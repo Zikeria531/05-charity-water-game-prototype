@@ -8,7 +8,9 @@
   <script src="script.js" defer></script>
 </head>
 <body>
+  <!-- Main game container for the entire water puzzle -->
   <main class="game-shell">
+    <!-- Top header with the game title and live score/time stats -->
     <header class="topbar">
       <div>
         <p class="eyebrow">WATERWORKS • LEVEL 01</p>
@@ -26,19 +28,28 @@
       </div>
     </header>
 
+    <!-- Game instructions explain the player goal and rules -->
     <p class="instructions">Three mysterious switches control two floodgates. Discover the sequence, open both gates, and deliver clean water to the village before time runs out.</p>
 
+    <!-- The puzzle board contains the game scene and gate status area -->
     <section class="board" aria-label="Interactive water puzzle">
+      <!-- The game scene shows the reservoir, gates, village, and switches -->
       <div class="scene" id="scene">
         <div class="sun" aria-hidden="true"></div>
         <div class="hills" aria-hidden="true"></div>
+
+        <!-- Water source at the left side of the puzzle -->
         <div class="reservoir">
           <span class="scene-label">RESERVOIR</span>
           <div class="reservoir-water" id="reservoirWater"></div>
         </div>
+
+        <!-- Water path between the reservoir and the village -->
         <div class="channel">
           <div class="flow" id="flow"></div>
         </div>
+
+        <!-- Each gate controls water flow to the village -->
         <div class="gate gate-one" id="gate1">
           <span class="gate-label">GATE 1</span>
           <div class="gate-door"></div>
@@ -47,6 +58,8 @@
           <span class="gate-label">GATE 2</span>
           <div class="gate-door"></div>
         </div>
+
+        <!-- Destination community that receives the water -->
         <div class="village">
           <div class="roof"></div>
           <div class="house">
@@ -55,6 +68,8 @@
           <span class="scene-label">VILLAGE</span>
           <div class="village-water" id="villageWater"></div>
         </div>
+
+        <!-- Three mystery switches are the puzzle input controls -->
         <button class="switch switch-one" id="switch1" aria-label="Activate left switch" title="Mystery switch">
           ●<span class="switch-indicator"></span>
         </button>
@@ -65,18 +80,25 @@
           ●<span class="switch-indicator"></span>
         </button>
       </div>
+
+      <!-- Shows whether each gate is open or closed during play -->
       <div class="gate-status">
         <span id="status1">Gate 1: Closed</span>
         <span id="status2">Gate 2: Closed</span>
       </div>
     </section>
 
+    <!-- Feedback area keeps the player informed during the game -->
     <p class="feedback" id="feedback" role="status" aria-live="polite">Press Start to begin. Then click the three switches in the scene.</p>
+
+    <!-- Buttons for starting, releasing water, and restarting the round -->
     <div class="controls">
       <button class="primary" id="startBtn">Start Game</button>
       <button class="primary" id="releaseBtn" disabled>Release Water</button>
       <button class="secondary" id="resetBtn">Restart</button>
     </div>
+
+    <!-- Final note explaining the educational purpose of the game -->
     <p class="footnote">Waterworks is an educational student prototype about the importance of delivering clean water to communities.</p>
   </main>
 </body>
