@@ -1,13 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Game</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waterworks | The Locked Reservoir</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Welcome to the Charity Water Game Prototype</h1>
-    <script src="script.js"></script>
+  <main class="game-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">WATERWORKS • LEVEL 01</p>
+        <h1>The Locked Reservoir</h1>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <span>Time</span>
+          <strong id="timer">60</strong>
+        </div>
+        <div class="stat">
+          <span>Score</span>
+          <strong id="score">0</strong>
+        </div>
+      </div>
+    </header>
+
+    <p class="instructions">Three mysterious switches control two floodgates. Discover the sequence, open both gates, and deliver clean water to the village before time runs out.</p>
+
+    <section class="board" aria-label="Interactive water puzzle">
+      <div class="scene" id="scene">
+        <div class="sun" aria-hidden="true"></div>
+        <div class="hills" aria-hidden="true"></div>
+        <div class="reservoir">
+          <span class="scene-label">RESERVOIR</span>
+          <div class="reservoir-water" id="reservoirWater"></div>
+        </div>
+        <div class="channel">
+          <div class="flow" id="flow"></div>
+        </div>
+        <div class="gate gate-one" id="gate1">
+          <span class="gate-label">GATE 1</span>
+          <div class="gate-door"></div>
+        </div>
+        <div class="gate gate-two" id="gate2">
+          <span class="gate-label">GATE 2</span>
+          <div class="gate-door"></div>
+        </div>
+        <div class="village">
+          <div class="roof"></div>
+          <div class="house">
+            <div class="window"></div>
+          </div>
+          <span class="scene-label">VILLAGE</span>
+          <div class="village-water" id="villageWater"></div>
+        </div>
+        <button class="switch switch-one" id="switch1" aria-label="Activate left switch" title="Mystery switch">
+          ●<span class="switch-indicator"></span>
+        </button>
+        <button class="switch switch-two" id="switch2" aria-label="Activate middle switch" title="Mystery switch">
+          ●<span class="switch-indicator"></span>
+        </button>
+        <button class="switch switch-three" id="switch3" aria-label="Activate right switch" title="Mystery switch">
+          ●<span class="switch-indicator"></span>
+        </button>
+      </div>
+      <div class="gate-status">
+        <span id="status1">Gate 1: Closed</span>
+        <span id="status2">Gate 2: Closed</span>
+      </div>
+    </section>
+
+    <p class="feedback" id="feedback" role="status" aria-live="polite">Press Start to begin. Then click the three switches in the scene.</p>
+    <div class="controls">
+      <button class="primary" id="startBtn">Start Game</button>
+      <button class="primary" id="releaseBtn" disabled>Release Water</button>
+      <button class="secondary" id="resetBtn">Restart</button>
+    </div>
+    <p class="footnote">Waterworks is an educational student prototype about the importance of delivering clean water to communities.</p>
+  </main>
 </body>
 </html>

@@ -13,3 +13,447 @@ Secondary Colors:
 - Pink:       #F16061
 
 */
+:root {
+  font-family: Arial,Helvetica,sans-serif;
+  color: #19374b;
+  background: #f1f6f8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 24px 14px;
+}
+
+.game-shell {
+  max-width: 1000px;
+  margin: auto;
+  background: white;
+  border-radius: 20px;
+  padding: clamp(16px,4vw,34px);
+  box-shadow: 0 12px 35px #163d5016;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.eyebrow {
+  font-size: .7rem;
+  letter-spacing: .15em;
+  font-weight: 800;
+  color: #c58c10;
+  margin: 0 0 8px;
+}
+
+h1 {
+  font-size: clamp(1.4rem,4vw,2.25rem);
+  margin: 0;
+}
+
+.stats {
+  display: flex;
+  gap: 10px;
+}
+
+.stat {
+  background: #eaf3f6;
+  border-radius: 12px;
+  padding: 10px 16px;
+  min-width: 76px;
+  text-align: center;
+}
+
+.stat span {
+  display: block;
+  font-size: .72rem;
+  color: #526d7d;
+}
+
+.stat strong {
+  font-size: 1.55rem;
+}
+
+.instructions {
+  line-height: 1.55;
+  color: #506879;
+  max-width: 760px;
+}
+
+.board {
+  border: 2px solid #c8dbe3;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #e5f4fa;
+}
+
+.scene {
+  position: relative;
+  aspect-ratio: 16/8;
+  overflow: hidden;
+  background: linear-gradient(#b8e3f5 0 67%,#9ecb91 67% 100%);
+}
+
+.sun {
+  position: absolute;
+  right: 8%;
+  top: 9%;
+  width: 7%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #ffd65c;
+}
+
+.hills {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: 17%;
+  height: 25%;
+  background: #8fbf93;
+  clip-path: polygon(0 100%,15% 35%,30% 85%,46% 20%,64% 90%,82% 30%,100% 90%,100% 100%);
+}
+
+.reservoir {
+  position: absolute;
+  left: 3%;
+  top: 30%;
+  width: 21%;
+  height: 47%;
+  border: clamp(3px,.8vw,9px) solid #718c9c;
+  border-radius: 5px;
+  background: #d4e7ed;
+  overflow: hidden;
+}
+
+.reservoir-water {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 76%;
+  background: repeating-linear-gradient(0deg,#4db5e9 0 13px,#62c6f0 13px 17px);
+  transition: height 1.6s;
+}
+
+.scene-label {
+  position: absolute;
+  z-index: 3;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(7px,1.25vw,12px);
+  font-weight: 800;
+  white-space: nowrap;
+  color: #23465d;
+}
+
+.channel {
+  position: absolute;
+  left: 24%;
+  right: 13%;
+  top: 60%;
+  height: 15%;
+  background: #d7e8ee;
+  border: clamp(3px,.8vw,8px) solid #829da9;
+  overflow: hidden;
+}
+
+.flow {
+  height: 100%;
+  width: 0;
+  background: repeating-linear-gradient(90deg,#39a9e4 0 18px,#67c8f4 18px 25px);
+}
+
+.flow.running {
+  animation: fill-channel 2.4s linear forwards;
+}
+
+@keyframes fill-channel {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+
+}
+
+.gate {
+  position: absolute;
+  top: 45%;
+  height: 34%;
+  width: 3%;
+  z-index: 4;
+}
+
+.gate-one {
+  left: 42%;
+}
+
+.gate-two {
+  left: 65%;
+}
+
+.gate-door {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(0deg,#a64d3c 0 9px,#c36b52 9px 15px);
+  border: 2px solid #78443b;
+  transition: height .35s;
+}
+
+.gate.open .gate-door {
+  height: 21%;
+  background: #4f9c78;
+  border-color: #387356;
+}
+
+.gate-label {
+  position: absolute;
+  bottom: 105%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: clamp(7px,1.2vw,12px);
+  font-weight: 800;
+}
+
+.village {
+  position: absolute;
+  right: 2%;
+  top: 40%;
+  width: 12%;
+  height: 38%;
+}
+
+.roof {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 32%;
+  background: #d48259;
+  clip-path: polygon(50% 0,100% 100%,0 100%);
+}
+
+.house {
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  width: 80%;
+  height: 60%;
+  background: #fff1ce;
+  border: 2px solid #aeaa8e;
+}
+
+.window {
+  position: absolute;
+  left: 35%;
+  top: 25%;
+  width: 30%;
+  height: 35%;
+  background: #8ab9cc;
+}
+
+.village .scene-label {
+  top: 95%;
+}
+
+.village-water {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0;
+  background: #49b9eb99;
+  transition: height 1s;
+}
+
+.village-water.full {
+  height: 40%;
+}
+
+.switch {
+  position: absolute;
+  top: 82%;
+  width: clamp(30px,5.5%,55px);
+  aspect-ratio: 1;
+  border: 3px solid #586e80;
+  border-radius: 10px;
+  background: #ffcf59;
+  color: #8a6510;
+  font-size: clamp(13px,2vw,23px);
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #b18429;
+  transform: translateY(0);
+  transition: transform .1s;
+}
+
+.switch:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 #b18429;
+}
+
+.switch:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.switch-one {
+  left: 32%;
+}
+
+.switch-two {
+  left: 53%;
+}
+
+.switch-three {
+  left: 76%;
+}
+
+.switch-indicator {
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #a85845;
+}
+
+.switch.active .switch-indicator {
+  background: #26a85d;
+}
+
+.gate-status {
+  display: flex;
+  justify-content: center;
+  gap: clamp(12px,4vw,50px);
+  padding: 13px;
+  background: #eaf3f6;
+  font-weight: 700;
+  font-size: .9rem;
+}
+
+.feedback {
+  text-align: center;
+  min-height: 45px;
+  line-height: 1.5;
+  font-weight: 600;
+  color: #305b74;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+button {
+  font: inherit;
+}
+
+.controls button {
+  border: 0;
+  border-radius: 10px;
+  padding: 13px 22px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.primary {
+  background: #f7c948;
+  color: #273e4c;
+}
+
+.secondary {
+  background: #e3edf1;
+  color: #28475b;
+}
+
+.controls button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.footnote {
+  margin: 26px 0 0;
+  color: #708490;
+  font-size: .78rem;
+  text-align: center;
+  line-height: 1.5;
+}
+
+button:focus-visible {
+  outline: 3px solid #125d9e;
+  outline-offset: 3px;
+}
+
+@media(max-width:600px) {
+  body {
+    padding: 8px;
+  }
+
+  .game-shell {
+    border-radius: 12px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+  }
+
+  .stats {
+    gap: 5px;
+  }
+
+  .stat {
+    min-width: 58px;
+    padding: 7px;
+  }
+
+  .stat strong {
+    font-size: 1.2rem;
+  }
+
+  .instructions {
+    font-size: .88rem;
+  }
+
+  .scene {
+    aspect-ratio: 16/10;
+  }
+
+  .switch {
+    top: 81%;
+    border-width: 2px;
+  }
+
+  .gate-status {
+    font-size: .76rem;
+  }
+
+  .controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .controls button {
+    padding: 13px 7px;
+  }
+
+  .controls button:last-child {
+    grid-column: 1/-1;
+  }
+
+}
