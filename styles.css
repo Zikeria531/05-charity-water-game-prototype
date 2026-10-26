@@ -56,7 +56,7 @@ body {
   font-size: .7rem;
   letter-spacing: .15em;
   font-weight: 800;
-  color: #c58c10;
+  color: #FFC907;
   margin: 0 0 8px;
 }
 
@@ -96,7 +96,7 @@ h1 {
 /* this controls the paragraph explaining what the player needs to do. */
 .instructions {
   line-height: 1.55;
-  color: #506879;
+  color: #1A1A1A;
   max-width: 760px;
 }
 
@@ -326,7 +326,7 @@ h1 {
   aspect-ratio: 1;
   border: 3px solid #586e80;
   border-radius: 10px;
-  background: #ffcf59;
+  background: #FFC907;
   color: #8a6510;
   font-size: clamp(13px,2vw,23px);
   font-weight: 900;
@@ -371,12 +371,12 @@ h1 {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #a85845;
+  background: #e43002;
 }
 
 /* this turns the switch light green when the switch is active. */
 .switch.active .switch-indicator {
-  background: #26a85d;
+  background: #04be52;
 }
 
 /* this styles the text that says whether Gate 1 and Gate 2 are open or closed. */
@@ -423,7 +423,7 @@ button {
 
 /* this is the yellow main action button style. */
 .primary {
-  background: #f7c948;
+  background: #FFC907;
   color: #273e4c;
 }
 
