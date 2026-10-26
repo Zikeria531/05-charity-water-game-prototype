@@ -13,31 +13,37 @@ Secondary Colors:
 - Pink:       #F16061
 
 */
+
+/* this defines the default font, text color, and background color for the entire webpage. */
 :root {
   font-family: Arial,Helvetica,sans-serif;
   color: #19374b;
   background: #f1f6f8;
 }
 
+/* this makes all elements size themselves with padding and borders included, so layouts stay neat. */
 * {
   box-sizing: border-box;
 }
 
+/* this removes the default browser spacing and makes the page take up the whole screen. */
 body {
   margin: 0;
   min-height: 100vh;
   padding: 24px 14px;
 }
 
+/* this is the big white game panel that holds everything together. */
 .game-shell {
   max-width: 1000px;
   margin: auto;
   background: white;
   border-radius: 20px;
-  padding: clamp(16px,4vw,34px);
+  padding: clamp(16px,4vw,34px); /*this lets the spacing grow and shrink with the screen size. */
   box-shadow: 0 12px 35px #163d5016;
 }
 
+/* this puts the title and the score/time boxes on opposite sides of the top bar. */
 .topbar {
   display: flex;
   align-items: center;
@@ -45,6 +51,7 @@ body {
   gap: 15px;
 }
 
+/* this styles the little label above the title so it looks like a game heading. */
 .eyebrow {
   font-size: .7rem;
   letter-spacing: .15em;
@@ -53,16 +60,19 @@ body {
   margin: 0 0 8px;
 }
 
+/* this controls the main game title text size and spacing. */
 h1 {
   font-size: clamp(1.4rem,4vw,2.25rem);
   margin: 0;
 }
 
+/* this makes the time and score boxes sit beside each other. */
 .stats {
   display: flex;
   gap: 10px;
 }
 
+/* this is the little card that shows the timer and score values. */
 .stat {
   background: #eaf3f6;
   border-radius: 12px;
@@ -71,22 +81,26 @@ h1 {
   text-align: center;
 }
 
+/* this styles the smaller text inside each stat box, like "Time" and "Score". */
 .stat span {
   display: block;
   font-size: .72rem;
   color: #526d7d;
 }
 
+/* this controls the big number in each stat box. */
 .stat strong {
   font-size: 1.55rem;
 }
 
+/* this controls the paragraph explaining what the player needs to do. */
 .instructions {
   line-height: 1.55;
   color: #506879;
   max-width: 760px;
 }
 
+/* this is the whole board area where the puzzle scene sits. */
 .board {
   border: 2px solid #c8dbe3;
   border-radius: 14px;
@@ -94,6 +108,7 @@ h1 {
   background: #e5f4fa;
 }
 
+/* this is the big scene area where the sky, water, gates, and village are laid out. */
 .scene {
   position: relative;
   aspect-ratio: 16/8;
@@ -101,6 +116,7 @@ h1 {
   background: linear-gradient(#b8e3f5 0 67%,#9ecb91 67% 100%);
 }
 
+/* this creates the sun in the top right of the scene. */
 .sun {
   position: absolute;
   right: 8%;
@@ -111,6 +127,7 @@ h1 {
   background: #ffd65c;
 }
 
+/* this creates the hills in the background behind the water scene. */
 .hills {
   position: absolute;
   left: -10%;
@@ -121,6 +138,7 @@ h1 {
   clip-path: polygon(0 100%,15% 35%,30% 85%,46% 20%,64% 90%,82% 30%,100% 90%,100% 100%);
 }
 
+/* this controls the reservoir box on the left side that stores the water. */
 .reservoir {
   position: absolute;
   left: 3%;
@@ -133,6 +151,7 @@ h1 {
   overflow: hidden;
 }
 
+/* this is the blue water inside the reservoir; this is what changes height when the puzzle is solved. */
 .reservoir-water {
   position: absolute;
   bottom: 0;
@@ -142,6 +161,7 @@ h1 {
   transition: height 1.6s;
 }
 
+/* this styles the labels like RESERVOIR and VILLAGE so they sit on top of the scene. */
 .scene-label {
   position: absolute;
   z-index: 3;
@@ -154,6 +174,7 @@ h1 {
   color: #23465d;
 }
 
+/* this controls the channel that carries water between the reservoir and the village. */
 .channel {
   position: absolute;
   left: 24%;
@@ -165,12 +186,14 @@ h1 {
   overflow: hidden;
 }
 
+/* this is the flowing blue water inside the channel. */
 .flow {
   height: 100%;
   width: 0;
   background: repeating-linear-gradient(90deg,#39a9e4 0 18px,#67c8f4 18px 25px);
 }
 
+/* this makes the flow animation play when the water is released. */
 .flow.running {
   animation: fill-channel 2.4s linear forwards;
 }
@@ -186,6 +209,7 @@ h1 {
 
 }
 
+/* this is the shared style for each gate in the scene. */
 .gate {
   position: absolute;
   top: 45%;
@@ -194,14 +218,17 @@ h1 {
   z-index: 4;
 }
 
+/* this moves the first gate to the left side of the scene. */
 .gate-one {
   left: 42%;
 }
 
+/* this moves the second gate to the right side of the scene. */
 .gate-two {
   left: 65%;
 }
 
+/* this is the actual gate door that opens and closes. */
 .gate-door {
   position: absolute;
   bottom: 0;
@@ -212,12 +239,14 @@ h1 {
   transition: height .35s;
 }
 
+/* this changes the gate from red/closed to green/open. */
 .gate.open .gate-door {
   height: 21%;
   background: #4f9c78;
   border-color: #387356;
 }
 
+/* this styles the text labels above each gate. */
 .gate-label {
   position: absolute;
   bottom: 105%;
@@ -228,6 +257,7 @@ h1 {
   font-weight: 800;
 }
 
+/* this is the village box on the far right where the water is delivered. */
 .village {
   position: absolute;
   right: 2%;
@@ -236,6 +266,7 @@ h1 {
   height: 38%;
 }
 
+/* this makes the roof of the village house look triangular. */
 .roof {
   position: absolute;
   top: 0;
@@ -245,6 +276,7 @@ h1 {
   clip-path: polygon(50% 0,100% 100%,0 100%);
 }
 
+/* this controls the main house shape under the roof. */
 .house {
   position: absolute;
   top: 30%;
@@ -255,6 +287,7 @@ h1 {
   border: 2px solid #aeaa8e;
 }
 
+/* this styles the window on the house so it looks lit up. */
 .window {
   position: absolute;
   left: 35%;
@@ -264,10 +297,12 @@ h1 {
   background: #8ab9cc;
 }
 
+/* this moves the village label down near the bottom of the house. */
 .village .scene-label {
   top: 95%;
 }
 
+/* this is the blue water that fills up at the village when the gates are open. */
 .village-water {
   position: absolute;
   left: 0;
@@ -278,10 +313,12 @@ h1 {
   transition: height 1s;
 }
 
+/* this makes the village water show up when the goal is reached. */
 .village-water.full {
   height: 40%;
 }
 
+/* this controls the look of the three mystery switches on the scene. */
 .switch {
   position: absolute;
   top: 82%;
@@ -299,28 +336,34 @@ h1 {
   transition: transform .1s;
 }
 
+/* this makes the switch look pressed down when the user clicks it. */
 .switch:active {
   transform: translateY(4px);
   box-shadow: 0 1px 0 #b18429;
 }
 
+/* this makes the switch look disabled and not clickable when the game is waiting. */
 .switch:disabled {
   opacity: .5;
   cursor: not-allowed;
 }
 
+/* this moves the first switch to the left side of the board. */
 .switch-one {
   left: 32%;
 }
 
+/* this moves the middle switch to the center. */
 .switch-two {
   left: 53%;
 }
 
+/* this moves the third switch to the right side. */
 .switch-three {
   left: 76%;
 }
 
+/* this is the little indicator light on each switch to show whether it is on or off. */
 .switch-indicator {
   position: absolute;
   right: 3px;
@@ -331,10 +374,12 @@ h1 {
   background: #a85845;
 }
 
+/* this turns the switch light green when the switch is active. */
 .switch.active .switch-indicator {
   background: #26a85d;
 }
 
+/* this styles the text that says whether Gate 1 and Gate 2 are open or closed. */
 .gate-status {
   display: flex;
   justify-content: center;
@@ -345,6 +390,7 @@ h1 {
   font-size: .9rem;
 }
 
+/* this styles the status text area that gives the player feedback during the game. */
 .feedback {
   text-align: center;
   min-height: 45px;
@@ -353,6 +399,7 @@ h1 {
   color: #305b74;
 }
 
+/* this makes the buttons sit in a row in the middle of the page. */
 .controls {
   display: flex;
   gap: 12px;
@@ -360,10 +407,12 @@ h1 {
   flex-wrap: wrap;
 }
 
+/* this keeps all buttons using the same font family as the rest of the page. */
 button {
   font: inherit;
 }
 
+/* this controls the shared look for the game action buttons. */
 .controls button {
   border: 0;
   border-radius: 10px;
@@ -372,21 +421,25 @@ button {
   cursor: pointer;
 }
 
+/* this is the yellow main action button style. */
 .primary {
   background: #f7c948;
   color: #273e4c;
 }
 
+/* this is the grey secondary button style. */
 .secondary {
   background: #e3edf1;
   color: #28475b;
 }
 
+/* this makes buttons look faded out when they are disabled. */
 .controls button:disabled {
   opacity: .45;
   cursor: not-allowed;
 }
 
+/* this styles the small note at the bottom explaining the educational purpose of the game. */
 .footnote {
   margin: 26px 0 0;
   color: #708490;
@@ -395,63 +448,78 @@ button {
   line-height: 1.5;
 }
 
+/* this adds a visible focus outline so keyboard users can see where they are on the page. */
 button:focus-visible {
   outline: 3px solid #125d9e;
   outline-offset: 3px;
 }
 
+/* this is the mobile version of the layout for smaller screens. */
 @media(max-width:600px) {
+  /* this reduces the padding on small screens so the game fits better. */
   body {
     padding: 8px;
   }
 
+  /* this makes the main game panel a bit tighter on phones. */
   .game-shell {
     border-radius: 12px;
   }
 
+  /* this makes the title and stats stack a little better on mobile. */
   .topbar {
     align-items: flex-start;
   }
 
+  /* this shrinks the space between the stats on smaller screens. */
   .stats {
     gap: 5px;
   }
 
+  /* this makes the stat boxes smaller on mobile. */
   .stat {
     min-width: 58px;
     padding: 7px;
   }
 
+  /* this reduces the number size in the stat boxes on phones. */
   .stat strong {
     font-size: 1.2rem;
   }
 
+  /* this makes the instructions a little smaller on smaller screens. */
   .instructions {
     font-size: .88rem;
   }
 
+  /* this makes the scene a little taller on phones so everything fits. */
   .scene {
     aspect-ratio: 16/10;
   }
 
+  /* this shrinks the switch size a bit for mobile. */
   .switch {
     top: 81%;
     border-width: 2px;
   }
 
+  /* this keeps the gate status text readable on tiny screens. */
   .gate-status {
     font-size: .76rem;
   }
 
+  /* this changes the controls from a row into a 2-column grid on mobile. */
   .controls {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
 
+  /* this keeps the mobile buttons from getting too much padding. */
   .controls button {
     padding: 13px 7px;
   }
 
+  /* this makes the last button stretch across both columns. */
   .controls button:last-child {
     grid-column: 1/-1;
   }
