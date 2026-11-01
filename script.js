@@ -8,17 +8,23 @@ const feedback = document.getElementById('feedback');
 const startBtn = document.getElementById('startBtn');
 const releaseBtn = document.getElementById('releaseBtn');
 const resetBtn = document.getElementById('resetBtn');
-const switches = [1, 2, 3].map(n => document.getElementById(`switch${n}`));
-const gateElements = [document.getElementById('gate1'), document.getElementById('gate2')];
+// we are giving the controls individual variables
+const powerBreaker = document.getElementById('powerBreaker');
+const floodgateControl = document.getElementById('floodgateControl');
+const safetyValve = document.getElementById('safetyValve');
+
+const gateElement = document.getElementById('gate1'); // level one will have only one gate
+
 const flow = document.getElementById('flow');
 const reservoirWater = document.getElementById('reservoirWater');
 const villageWater = document.getElementById('villageWater');
 
-// Create game state variables that track whether the gates are open and whether the game is running.
-let gate1Open = false;
-let gate2Open = false;
-let powerReady = false; // this tracks whether the first switch has powered the machine.
-let gameStarted = false;
+// create and declare variables
+let powerOn = false; // the pumping station has no power
+let gateOpen = false; // the floodgate starts off closed
+let valveOpen = true; // the safety valve starts open
+let gameStarted = false; // the player hasn't started the round
+
 let gameOver = false;
 let seconds = 60;
 let score = 0;
